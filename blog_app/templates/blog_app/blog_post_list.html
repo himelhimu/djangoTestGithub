@@ -1,12 +1,14 @@
-<html>
-    <head>
-        <title>My Blog</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="">Random Blog</a></h1>
+{% extends 'blog_app/base.html' %}
+
+{% block content %}
+<div><p>{{ posts.count }}</p></div>
+{% for post in posts %}
+    <div class="post">
+        <div class="date">
+            {{ post.published_date }}
         </div>
-        <div>
-        </div>
-    </body>
-</html>
+        <h1><a href="">{{ post.title }}</a></h1>
+        <p>{{ post.text|linebreaksbr }}</p>
+    </div>
+{% endfor %}
+{% endblock %}
