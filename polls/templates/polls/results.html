@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% if question %}
+<p><strong>{{ question.question_text }}</strong></p>
+<ul>
+    {% for choice in question.choice_set.all %}
+    <li>{{ choice.choice_text }} ---Number of Votes--{{ choice.votes }}</li>
+</ul>
+{% endfor %}
+{% endif %}
+<a href="{% url 'polls:details' question.id %}">Vote Again ?</a>
+</body>
+</html>
